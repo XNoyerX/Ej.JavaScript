@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de JavaScript</title>
+</head>
+<body>
+    <h1>Ejercicios de JavaScript</h1>
+    <p>Selecciona uno de los ocho ejercicios para ejecutarlo.</p>
+    <select id="ejercicio">
+        <option value="1">1. Desempeño académico</option>
+        <option value="2">2. Descuentos de tienda</option>
+        <option value="3">3. Validación de acceso</option>
+        <option value="4">4. Tabla de multiplicar</option>
+        <option value="5">5. Ventas semanales</option>
+        <option value="6">6. Calculadora</option>
+        <option value="7">7. Administración de alumnos</option>
+        <option value="8">8. Sistema de inventario</option>
+    </select>
+    <button onclick="ejecutarEjercicio()">Ejecutar</button>
+    <p>Los resultados aparecen en la consola del navegador (F12 → Consola).</p>
+
+    <script>
+        function ejecutarEjercicio() {
+            const anterior = document.getElementById("codigoEjercicio");
+            if (anterior) anterior.remove();
+
+            const numero = document.getElementById("ejercicio").value;
+            const script = document.createElement("script");
+            script.id = "codigoEjercicio";
+            script.src = "ejercicio" + numero + ".js";
+            script.onerror = function () {
+                console.log("No se pudo cargar el archivo del ejercicio.");
+            };
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+</html>
